@@ -1,0 +1,247 @@
+:root {
+    --kiwi-green-main: #8BC34A; /* 主要奇異果綠 */
+    --kiwi-green-light: #F0F8EC; /* 淺色奇異果綠背景 */
+    --kiwi-green-dark: #689F38; /* 深奇異果綠用於按鈕hover */
+    --text-color: #333;
+    --white: #FFFFFF;
+    --border-color: #A5D6A7; /* 淺綠色邊框 */
+    --shadow-color: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-size: cover; /* 背景圖片覆蓋整個視窗 */
+    background-position: center; /* 背景圖片置中 */
+    background-repeat: no-repeat; /* 背景圖片不重複 */
+    transition: background-image 1s ease-in-out; /* 背景圖片平滑切換 */
+    /* 預設背景，將在 JS 中被覆蓋 */
+    background-image: url('default.jpg'); /* 這裡會確保初始載入這張圖 */
+}
+
+/* 這些類別將由 JavaScript 動態添加到 body 元素上 */
+.default-background {
+    background-image: url('default.jpg');
+}
+
+.normal-background {
+    background-image: url('normal.jpg'); /* 海闊天輕 */
+}
+
+.overweight-background {
+    background-image: url('overweight.jpg'); /* 夕陽 */
+}
+
+.underweight-background {
+    background-image: url('underweight.jpg'); /* 雲海 */
+}
+
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明白色，讓背景透出來 */
+    padding: 35px 45px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px var(--shadow-color);
+    text-align: center;
+    width: 100%;
+    max-width: 580px; /* 增加寬度以容納更多內容 */
+    box-sizing: border-box;
+    backdrop-filter: blur(5px); /* 模糊背景，讓內容更清晰 */
+}
+
+h1, h2 {
+    color: var(--kiwi-green-dark); /* 深奇異果綠標題 */
+    margin-bottom: 25px;
+    font-size: 2.3em;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 1.05em;
+}
+
+.input-group input[type="text"],
+.input-group input[type="number"],
+.input-group select {
+    width: calc(100% - 24px); /* 考慮 padding */
+    padding: 12px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: var(--white);
+}
+
+.input-group input[type="text"]:focus,
+.input-group input[type="number"]:focus,
+.input-group select:focus {
+    border-color: var(--kiwi-green-main);
+    box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.3); /* 奇異果綠光暈 */
+    outline: none;
+}
+
+button {
+    background-color: var(--kiwi-green-main);
+    color: var(--white);
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 15px;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background-color: var(--kiwi-green-dark);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.result {
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明白色 */
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--kiwi-green-main);
+    text-align: left;
+}
+
+.result p {
+    margin: 8px 0;
+    font-size: 1.05em;
+    color: var(--text-color);
+}
+
+.result span {
+    font-weight: bold;
+    color: var(--kiwi-green-dark); /* BMI值和類別使用深奇異果綠 */
+}
+
+.result .note {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 15px;
+}
+
+.advice {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--kiwi-green-main);
+    text-align: left;
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+.advice h3 {
+    color: var(--kiwi-green-dark);
+    margin-bottom: 10px;
+    font-size: 1.25em;
+    font-weight: 600;
+}
+
+.advice p {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.advice ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-size: 0.9em;
+}
+
+.advice li {
+    margin-bottom: 5px;
+}
+
+/* 歷史紀錄區塊 */
+.records-section {
+    margin-top: 40px;
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明白色 */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    text-align: left;
+    border: 1px solid var(--border-color);
+}
+
+.records-section h2 {
+    color: var(--kiwi-green-dark);
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+#recordsList {
+    max-height: 350px; /* 增加高度 */
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.record-item {
+    background-color: var(--kiwi-green-light); /* 淺奇異果綠背景 */
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--kiwi-green-main);
+    position: relative;
+}
+
+.record-item p {
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+.record-item .record-actions {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.record-item .record-actions button {
+    width: auto;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    margin-left: 10px;
+    margin-top: 0;
+}
+
+.record-item .record-actions button.edit-btn {
+    background-color: #4CAF50; /* 健康綠色 */
+}
+.record-item .record-actions button.edit-btn:hover {
+    background-color: #388E3C;
+}
+
+.record-item .record-actions button.delete-btn {
+    background-color: #F44336; /* 警示紅色 */
+}
+.record-item .record-actions button.delete-btn:hover {
+    background-color: #D32F2F;
+}
+
+.hidden {
+    display: none;
+}

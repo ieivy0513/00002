@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>風景 BMI 計算機</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="default-background">
+    <div class="container">
+        <h1>BMI 健康計算機</h1>
+
+        <div class="input-group">
+            <label for="name">您的名字 (可選填)：</label>
+            <input type="text" id="name" placeholder="例如：林小花">
+        </div>
+        <div class="input-group">
+            <label for="gender">性別：</label>
+            <select id="gender">
+                <option value="male">男性</option>
+                <option value="female">女性</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="height">身高 (公分)：</label>
+            <input type="number" id="height" placeholder="例如：160">
+        </div>
+        <div class="input-group">
+            <label for="weight">體重 (公斤)：</label>
+            <input type="number" id="weight" placeholder="例如：55">
+        </div>
+        <div class="input-group">
+            <label for="age">年齡：</label>
+            <input type="number" id="age" placeholder="例如：25">
+        </div>
+        <button id="calculateBtn">計算並紀錄 BMI</button>
+
+        <div id="result" class="result">
+            <p>您的 BMI：<span id="bmiValue">--</span></p>
+            <p>您的類別：<span id="bmiCategory">--</span></p>
+            <p id="bmiStandardNote" class="note"></p>
+            <div id="advice" class="advice"></div>
+        </div>
+
+        <button id="showRecordsBtn">查看我的歷史紀錄</button>
+
+        <div id="recordsSection" class="records-section hidden">
+            <h2>您的歷史 BMI 紀錄</h2>
+            <div id="recordsList">
+                <p>尚無紀錄。</p>
+            </div>
+            <button id="clearRecordsBtn">清除所有紀錄</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
